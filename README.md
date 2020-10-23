@@ -32,7 +32,18 @@ It's have main password which only you have to remember and all thing will be se
 As it's iwork offline you data hacking by hacker, your is secure in your computer hard disc.
 As it's still in under developing it may have some issue, but you can send the issue on aniruddhagawali05@gmail.com 
 
+ ### Some Screenshots
+ 
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%203.png" width="500">](Screenshot%203.png) 
 
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%205.png" width="500">](Screenshot%205.png) 
+
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%202.png" width="500">](Screenshot%202.png) 
+ 
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%201.png" width="500">](Screenshot%201.png)
+  
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%204.png" width="500">](Screenshot%204.png)
+ 
 
 
 
