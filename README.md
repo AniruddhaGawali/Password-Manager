@@ -14,7 +14,7 @@ This Application is create for saving and keep secureing your passwords which yo
 ######  5. Fully Offline
 ######  6. User friendly UI 
 
-## [Download Now](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)
+### Download Now 
 [Click Here](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)
 
 
