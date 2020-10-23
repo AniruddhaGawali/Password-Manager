@@ -14,6 +14,11 @@ This Application is create for saving and keep secureing your passwords which yo
 ######  5. Fully Offline
 ######  6. User friendly UI 
 
+## [Download Now](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)
+[Click Here](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)
+
+
+
 - #### Why need Password Manager ?
 Every day we go to new website and surf Internet. In this we create lots of accounts and so far we also forgot its passwords and username and also the gmail/phone number we added to it, and some time we need to login again but we gwt stuck at that time and finally due to this we have to reset that forgotton password, but this take up our 5-6 minutes also.
 
