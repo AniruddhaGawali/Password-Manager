@@ -3,13 +3,13 @@
 [<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/data/img/PicsArt_10-18-12.32.10.png" width="130">](PicsArt_10-18-12.32.10.png) 
 
 
-### Lock It! Rock It!
+## Lock It! Rock It!
 This Application is create for saving and keep secureing your passwords which you can remember always. This is an simple application works on python lanugage. It's an GUI based application simple to use and easy to used. It's have lots of feature which will help you in it even it is in under developing, You would not get any problem while using it simple and user friendly UI help you to make your work easy, faster and get you a better result also. So I think you must gave a try for this application.
 
 #### Download Now : *[Click Here](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)*
 
 
-###  Features
+##  Features
 ######  1. Login and Resgistration sevice
 ######  2. Mutilple, Multipeople Account can be created in this application
 ######  3. Password Generator (Mix, Alpha-Numercial, Numerical)
