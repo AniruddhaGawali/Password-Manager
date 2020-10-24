@@ -37,7 +37,7 @@ If you want to run the program in you IDE you have to install some modules
 ```python
 pip install pickle
 ```
-2.
+2. ttkthemes
 ```python
 pip install ttkthemes
 ```
