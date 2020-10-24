@@ -66,7 +66,7 @@ As it's still in under developing it may have some issue, but you can send the i
 ------------
 
 
- ### Some Screenshots 📸
+ ## Some Screenshots 📸
  
 [<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%203.png" width="500">](Screenshot%203.png) 
 
