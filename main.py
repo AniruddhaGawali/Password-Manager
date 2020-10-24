@@ -2,9 +2,13 @@ from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg 
 from PIL import Image, ImageTk
+from cryptography.fernet import Fernet
 from random import *
 import os,pickle
+
     
+
+
 
 
 
@@ -30,7 +34,7 @@ class SampleApp(Tk):
         global user,passs
         user=StringVar()
         passs=StringVar()
-        user.set('akg')
+        user.set('a')
 
         menubar = MenuBar(self)
         self.config(menu=menubar)
@@ -167,7 +171,9 @@ class Login_page(Frame,Menu):
         if os.path.isfile(f'data/user data/{user.get()}_pass_file.p'):
             with open(f'data/user data/{user.get()}_pass_file.p','rb') as f:
                 listt=pickle.load(f)
-            if user.get() == listt[0] and passs.get()==listt[1]:
+            a=decrypt_(listt[0],user.get())
+            b=decrypt_(listt[1],user.get())
+            if user.get() == a and passs.get()==b:
                 master.switch_frame(Manager_Page)
             else:
                     msg.showerror('Wrong',"Wrong user or password")
@@ -238,8 +244,11 @@ class sign_up_page(Frame):
         if newuser.get() == '' or len(newpasss.get()) < 8:
             msg.showerror('Invalid Input','Please Enter Valid Username or\nPassword must be of 8 digit or More than That')
         else:
+            genwrite_key(newuser.get())
+            a=encrypt_(newuser.get(),newuser.get())
+            b=encrypt_(newpasss.get(),newuser.get())
             with open(f'data/user data/{newuser.get()}_pass_file.p','wb') as f:
-                pickle.dump([newuser.get(),newpasss.get()],f)
+                pickle.dump([a,b],f)
             msg.showinfo('Account Added Successfull','Your Account has been Added\nPlease Login you account to access')
             master.switch_frame(Login_page)
 
@@ -356,11 +365,11 @@ class Show_Pass(Frame):
 
         for i in range(0,len(self.dic)):
             ttk.Label(main_frame,text=f'{i+1}]').grid(row=i+1,column=1,pady=(15,0))
-            ttk.Label(main_frame,text=f' {self.key[i].capitalize()}',style='TLabel').grid(row=i+1,column=2,padx=(10,40),pady=(15,0))
-            ttk.Label(main_frame,text=f'{self.value[i][0]}\n{self.value[i][1]}',style='TLabel').grid(row=i+1,column=3,padx=(0,50),pady=(25,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(self.key[i],user.get())}',style='TLabel').grid(row=i+1,column=2,padx=(10,40),pady=(15,0))
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][0],user.get())}\n{decrypt_(self.value[i][1],user.get())}',style='TLabel').grid(row=i+1,column=3,padx=(0,50),pady=(25,0)) 
             # ttk.Label(main_frame,text=f'{self.value[i][1]}',style='TLabel').grid(row=i+1,column=3,padx=(0,20)) 
-            ttk.Label(main_frame,text=f'{self.value[i][2]}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
-            ttk.Label(main_frame,text=f'{self.value[i][3]}',style='TLabel').grid(row=i+1,column=5,padx=(10,0),pady=(15,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][2],user.get())}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][3],user.get())}',style='TLabel').grid(row=i+1,column=5,padx=(10,0),pady=(15,0)) 
         def back(master):
             master.switch_frame(Manager_Page)
 
@@ -426,11 +435,11 @@ class Delete_Pass(Show_Pass):
         ttk.Label(main_frame,text=f'PASSWORD',style='title.TLabel').grid(row=0,column=5,padx=(0,0),pady=(0,15))
 
         for i in range(0,len(self.dic)):
-            ttk.Label(main_frame,text=f'{key[i].capitalize()}',style='TLabel').grid(row=i+1,column=1,padx=(0,40),pady=(15,0))
-            ttk.Label(main_frame,text=f'{value[i][0]}\n{value[i][1]}',style='TLabel').grid(row=i+1,column=2,padx=(0,50),pady=(25,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(key[i],user.get())}',style='TLabel').grid(row=i+1,column=1,padx=(0,40),pady=(15,0))
+            ttk.Label(main_frame,text=f'{decrypt_(value[i][0],user.get())}\n{decrypt_(value[i][1],user.get())}',style='TLabel').grid(row=i+1,column=2,padx=(0,50),pady=(25,0)) 
                 # ttk.Label(main_frame,text=f'{self.value[i][1]}',style='TLabel').grid(row=i+1,column=3,padx=(0,20)) 
-            ttk.Label(main_frame,text=f'{value[i][2]}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
-            ttk.Label(main_frame,text=f'{value[i][3]}',style='TLabel').grid(row=i+1,column=5,padx=(0,0),pady=(15,0))       
+            ttk.Label(main_frame,text=f'{decrypt_(value[i][2],user.get())}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(value[i][3],user.get())}',style='TLabel').grid(row=i+1,column=5,padx=(0,0),pady=(15,0))       
 
         Checkbutton_style = ttk.Style()
         Checkbutton_style.configure('checkbutton.TCheckbutton', background=bg_color,foreground=fg_color,)
@@ -445,11 +454,11 @@ class Delete_Pass(Show_Pass):
 
         def delete(self,master):
             self.delete_list=[]
-            choics= msg.askquestion('Confoirm','Do you really want to delete')
+            choics= msg.askquestion('Confirm','Do you really want to delete')
             if choics == 'yes':
                 for i in range(0,len(self.dic)):
                     if globals()['checkbutton%s' % i].get() > 0:
-                        self.delete_list.append(f'{key[i]}')
+                        self.delete_list.append(key[i])
                 for i in self.delete_list:
                     self.dic.pop(i)
                 with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
@@ -589,11 +598,15 @@ class Add_Pass(Frame):
                         self.username.set('---')
 
                     self.dic={}
-                    list_ = [f'{self.email.get()}',f'{self.phone_num.get()}',f'{self.username.get()}',f'{self.password.get()}']
+                    list_ = [encrypt_(self.email.get(),user.get()),
+                    encrypt_(self.phone_num.get(),user.get()), 
+                    encrypt_(self.username.get(),user.get()),
+                    encrypt_(self.password.get(),user.get())]
+
                     if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
                         with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                             self.dic=pickle.load(f)
-                    self.dic[f'{self.type.get()}'] = list_
+                    self.dic[encrypt_(self.type.get(),user.get())] = list_
                     with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
                         pickle.dump(self.dic,f)
                     msg.showinfo('Add Sucessfull', 'Your Password data has been added')
@@ -608,11 +621,15 @@ class Add_Pass(Frame):
                             self.username.set('---')
 
                         self.dic={}
-                        list_ = [f'{self.email.get()}',f'{self.phone_num.get()}',f'{self.username.get()}',f'{self.password.get()}']
+                        list_ = [encrypt_(self.email.get(),user.get()),
+                        encrypt_(self.phone_num.get(),user.get()),
+                        encrypt_(self.username.get(),user.get()),
+                        encrypt_(self.password.get(),user.get())]
+
                         if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
                             with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                                 self.dic=pickle.load(f)
-                        self.dic[f'{self.type.get()}'] = list_
+                        self.dic[encrypt_(self.type.get(),user.get())] = list_
                         with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
                             pickle.dump(self.dic,f)
                         msg.showinfo('Add Sucessfull', 'Your Password data has been added')
@@ -688,11 +705,11 @@ class Change_Pass(Frame):
         ttk.Label(main_frame,text=f'PASSWORD',style='title.TLabel').grid(row=0,column=5,padx=(0,0),pady=(0,15))
 
         for i in range(0,len(self.dic)):
-            ttk.Label(main_frame,text=f' {self.key[i].capitalize()}',style='TLabel').grid(row=i+1,column=2,padx=(10,40),pady=(15,0))
-            ttk.Label(main_frame,text=f'{self.value[i][0]}\n{self.value[i][1]}',style='TLabel').grid(row=i+1,column=3,padx=(0,50),pady=(25,0)) 
+            ttk.Label(main_frame,text=f' {decrypt_(self.key[i],user.get())}',style='TLabel').grid(row=i+1,column=2,padx=(10,40),pady=(15,0))
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][0],user.get())}\n{decrypt_(self.value[i][1],user.get())}',style='TLabel').grid(row=i+1,column=3,padx=(0,50),pady=(25,0)) 
             # ttk.Label(main_frame,text=f'{self.value[i][1]}',style='TLabel').grid(row=i+1,column=3,padx=(0,20)) 
-            ttk.Label(main_frame,text=f'{self.value[i][2]}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
-            ttk.Label(main_frame,text=f'{self.value[i][3]}',style='TLabel').grid(row=i+1,column=5,padx=(0,0),pady=(15,0))
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][2],user.get())}',style='TLabel').grid(row=i+1,column=4,padx=(0,30),pady=(15,0)) 
+            ttk.Label(main_frame,text=f'{decrypt_(self.value[i][3],user.get())}',style='TLabel').grid(row=i+1,column=5,padx=(0,0),pady=(15,0))
 
         Checkbutton_style = ttk.Style()
         Checkbutton_style.configure('checkbutton.TCheckbutton', background=bg_color,foreground=fg_color,)
@@ -749,6 +766,7 @@ class Change_pass_label(Frame):
             self.value.append(v)
 
 
+
         Style3=ttk.Style()
         Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
         self.label_img= ImageTk.PhotoImage(Image.open('data/img/change_s.png'))
@@ -766,11 +784,11 @@ class Change_pass_label(Frame):
         self.username= StringVar()
         self.password= StringVar()
 
-        self.type.set(self.key[c])
-        self.email.set(self.value[c][0])
-        self.phone_num.set(self.value[c][1])
-        self.username.set(self.value[c][2])
-        self.password.set(self.value[c][3])
+        self.type.set(decrypt_(self.key[c],user.get()))
+        self.email.set(decrypt_(self.value[c][0],user.get()))
+        self.phone_num.set(decrypt_(self.value[c][1],user.get()))
+        self.username.set(decrypt_(self.value[c][2],user.get()))
+        self.password.set(decrypt_(self.value[c][3],user.get()))
 
 
 
@@ -841,13 +859,17 @@ class Change_pass_label(Frame):
                     if self.username.get() == '':
                         self.username.set('---')
 
-                    self.dic.pop(self.key[c])
-                    self.dic={}
-                    list_ = [f'{self.email.get()}',f'{self.phone_num.get()}',f'{self.username.get()}',f'{self.password.get()}']
+                    list_ = [decrypt_(self.email.get(),user.get()),
+                    decrypt_(self.phone_num.get(),user.get()),
+                    decrypt_(self.username.get(),user.get()),
+                    decrypt_(self.password.get(),user.get())]
+
                     if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
                         with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                             self.dic=pickle.load(f)
-                    self.dic[f'{self.type.get()}'] = list_
+                    self.dic.pop(self.key[c])
+
+                    self.dic[decrypt_(self.type.get(),user.get())] = list_
                     with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
                         pickle.dump(self.dic,f)
                     msg.showinfo('Add Sucessfull', 'Your Password data has been added')
@@ -861,15 +883,20 @@ class Change_pass_label(Frame):
                         if self.username.get() == '':
                             self.username.set('---')
 
-                        self.dic.pop(self.key[c])
-                        self.dic={}
-                        list_ = [f'{self.email.get()}',f'{self.phone_num.get()}',f'{self.username.get()}',f'{self.password.get()}']
+
+                        list_ = [encrypt_(self.email.get(),user.get()),
+                        encrypt_(self.phone_num.get(),user.get()),
+                        encrypt_(self.username.get(),user.get()),
+                        encrypt_(self.password.get(),user.get())]
                         if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
                             with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                                 self.dic=pickle.load(f)
-                        self.dic[f'{self.type.get()}'] = list_
+                        self.dic.pop(self.key[c])
+
+                        self.dic[encrypt_(self.type.get(),user.get())] = list_
                         with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
                             pickle.dump(self.dic,f)
+
                         msg.showinfo('Add Sucessfull', 'Your Password data has been added')
                         master.switch_frame(Manager_Page)
                     except ValueError:
@@ -1130,6 +1157,30 @@ class Delete_acc(Frame):
 
 
 
+
+
+def genwrite_key(username):
+        key = Fernet.generate_key()
+        with open(f"data/key/{username}.key", "wb") as key_file:
+            key_file.write(key)
+
+def call_key(user):
+        return open(f"data/key/{user}.key", "rb").read()
+
+        
+def encrypt_(msg,username):
+        key = call_key(username)
+        slogan = msg.encode()
+        a = Fernet(key)
+        coded_slogan = a.encrypt(slogan)
+        return coded_slogan
+
+def decrypt_(msg,user):
+        key = call_key(user)
+        b = Fernet(key)
+        decoded_slogan = b.decrypt(msg)
+        decoded_slogan=decoded_slogan.decode('utf-8')
+        return decoded_slogan
 
             
 
