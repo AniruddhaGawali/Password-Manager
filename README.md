@@ -9,8 +9,12 @@ experience better. Even it is in under developing, You would not get any problem
 
 #### Download Now | *[Click Here](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Passwors_Manager_setup.exe)*
 
+## Features v3
+######  1. Added Encryption to save Passwords 
+######  2. Minor Bug Fix
 
-##  Features
+
+##  Features v2
 ######  1. Login and Resgistration sevice
 ######  2. Mutilple, Multipeople Account can be created in this application
 ######  3. Password Generator (Mix, Alpha-Numercial, Numerical)
