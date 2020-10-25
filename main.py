@@ -1,3 +1,5 @@
+# ------------------------------------------------------------------All Modules-------------------------------------------------------------
+
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg 
@@ -5,13 +7,12 @@ from PIL import Image, ImageTk
 from cryptography.fernet import Fernet
 from random import *
 import os,pickle
+# -------------------------------------------------------------------GLOBAL------------------------------------------------------------------
 
-    
-
-
-
+fa = None
 
 
+# -------------------------------------------------------------------GUI CLASS-----------------------------------------------------------------
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
@@ -48,6 +49,7 @@ class SampleApp(Tk):
 
 
     def switch_frame(self, frame_class):
+        global new_frame
         new_frame = frame_class(self)
         if self._frame is not None:
             self._frame.destroy()
@@ -68,13 +70,13 @@ class SampleApp(Tk):
         menu_fg='black'
         self.config(bg=bg_color)
 
-
+# -----------------------------------------------------------------------MENU----------------------------------------------------------------
 class MenuBar(Menu):
     def __init__(self, parent):
         Menu.__init__(self, parent)
         global theme
 
-        fileMenu = Menu(self, tearoff=False,bg=bg_color,fg=menu_fg,activeforeground=menu_fg,activebackground='slateblue')
+        fileMenu = Menu(self, tearoff=False,bg='white',fg='black',activeforeground='black',activebackground='slateblue')
         self.add_cascade(label="Tools",underline=0, menu=fileMenu)
         fileMenu.add_command(label="Login", underline=1,command=lambda : parent.switch_frame(Login_page))
         fileMenu.add_command(label="Sign up", underline=1,command= lambda : parent.switch_frame(sign_up_page))
@@ -83,26 +85,40 @@ class MenuBar(Menu):
         fileMenu.add_separator()
         fileMenu.add_command(label="Exit", underline=1,command= lambda : parent.destroy())
 
+        def restart_program():
+            python = sys.executable
+            os.execl(python, python, * sys.argv)
 
         def temp_light():
             global theme
             theme=1
-            msg.showinfo("RESTART", 'Please restart the application for appling the Theme')
+            parent.light()
+            parent.switch_frame(fa)
+
+            # new_frame.pack()
+            # msg.showinfo("RESTART", 'Please relogin the Application')
         def temp_dark():
             global theme
             theme=2
-            msg.showinfo("RESTART", 'Please restart the application for appling the Theme')
+            parent.dark()
+            parent.switch_frame(fa)
+            # new_frame.pack()
+           
+            # msg.showinfo("RESTART", 'Please relogin the Application')
 
-        fileMenu2 = Menu(self, tearoff=False,bg=bg_color,fg=menu_fg,activeforeground='black',activebackground='slateblue')
+
+        fileMenu2 = Menu(self, tearoff=False,bg='white',fg='black',activeforeground='black',activebackground='slateblue')
         self.add_cascade(label="Settings",underline=0, menu=fileMenu2)
-        sub_menu=Menu(fileMenu2,tearoff=False,bg=bg_color,fg=menu_fg,activeforeground='black',activebackground='slateblue')
+        sub_menu=Menu(fileMenu2,tearoff=False,bg='white',fg='black',activeforeground='black',activebackground='slateblue')
         sub_menu.add_command(label='Light',underline=1,command= lambda :  temp_light())
         sub_menu.add_command(label='Dark',underline=1,command= lambda : temp_dark())
         fileMenu2.add_cascade(label="Theme",underline=0, menu=sub_menu)
         fileMenu2.add_command(label="About",underline=0,command= lambda : msg.showinfo('Info','This application is created by AKG\n              MADE IN INDIA'))
 
-
+# ---------------------------------------------------------------------------------------------------------------------------------------------
         
+
+
 
 
 
@@ -111,6 +127,9 @@ class Login_page(Frame,Menu):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.config(bg=bg_color)
+
+        global fa 
+        fa=Login_page
 
         Style1 =  ttk.Style()
         Style1.configure('TLabel',background=bg_color,foreground=fg_color)
@@ -188,11 +207,19 @@ class Login_page(Frame,Menu):
 
 
 
+
+
+
+
+
+
 class sign_up_page(Frame):
 
     def __init__(self, master):
         Frame.__init__(self, master)
         Frame.configure(self,bg=bg_color)
+        global fa 
+        fa=sign_up_page
 
         global newuser,newpasss
         newuser=StringVar()
@@ -254,12 +281,20 @@ class sign_up_page(Frame):
 
 
 
+
+
+
+
+
     
 
 class Manager_Page(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         Frame.configure(self,bg=bg_color)
+
+        global fa 
+        fa=Manager_Page
 
         Style2=ttk.Style()
         Style2.configure('title.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
@@ -306,6 +341,13 @@ class Manager_Page(Frame):
         but4.grid(row=2,column=1,pady=(40,0),padx=(40,0))
 
 
+
+
+
+
+
+
+
 class Show_Pass(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -313,6 +355,9 @@ class Show_Pass(Frame):
         root = self
         self.key=[]
         self.value=[]
+
+        global fa 
+        fa=Show_Pass
 
         Style3=ttk.Style()
         Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
@@ -382,6 +427,16 @@ class Show_Pass(Frame):
         canvas.config(scrollregion=canvas.bbox("all"))
 
         # return main_frame,self.dic,root
+
+
+
+
+
+
+
+
+
+
 class Delete_Pass(Show_Pass):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -389,6 +444,9 @@ class Delete_Pass(Show_Pass):
         root = self
         key=[]
         value=[]
+
+        global fa 
+        fa=Delete_Pass
 
         Style3=ttk.Style()
         Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
@@ -483,10 +541,19 @@ class Delete_Pass(Show_Pass):
             # back(master)
 
 
+
+
+
+
+
+
 class Add_Pass(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         Frame.configure(self,bg=bg_color)
+
+        global fa 
+        fa=Add_Pass
 
         Style3=ttk.Style()
         Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
@@ -647,6 +714,11 @@ class Add_Pass(Frame):
 
 
 
+
+
+
+
+
 class Change_Pass(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -654,6 +726,9 @@ class Change_Pass(Frame):
         root = self
         self.key=[]
         self.value=[]
+
+        global fa 
+        fa=Change_Pass
 
         Style3=ttk.Style()
         Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')
@@ -749,6 +824,14 @@ class Change_Pass(Frame):
 
 
 
+
+
+
+
+
+
+
+
 class Change_pass_label(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -756,7 +839,8 @@ class Change_pass_label(Frame):
         self.key=[]
         self.value=[]
 
-
+        global fa 
+        fa=Change_pass_label
 
         with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                 self.dic=pickle.load(f)
@@ -926,13 +1010,24 @@ class Change_pass_label(Frame):
 
 
 
+
+
+
+
+
+
+
+
 class select_Generator(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         Frame.configure(self,bg=bg_color)
 
         Style3=ttk.Style()
-        Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')      
+        Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold') 
+
+        global fa 
+        fa=select_Generator     
 
 
         f= Frame(self,bg=bg_color)
@@ -1020,7 +1115,10 @@ class Pass_Generator(Frame):
         Frame.configure(self,bg=bg_color) 
 
         Style3=ttk.Style()
-        Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')      
+        Style3.configure('title2.TLabel',background=bg_color,foreground=fg_color,font='Helvetica 30 bold')    
+
+        global fa 
+        fa=Pass_Generator  
 
 
         f= Frame(self,bg=bg_color)
@@ -1092,10 +1190,19 @@ class Pass_Generator(Frame):
 
 
 
+
+
+
+
+
+
 class Delete_acc(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         Frame.configure(self,bg=bg_color)
+
+        global fa 
+        fa=Delete_acc
 
 
         Style1 =  ttk.Style()
@@ -1155,8 +1262,7 @@ class Delete_acc(Frame):
         if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
             os.remove(f'data/pass data/{user.get()}_pass.p')
 
-
-
+# ------------------------------------------------------------------GLOBAL FUNCTIONS-----------------------------------------------------------
 
 
 def genwrite_key(username):
@@ -1185,11 +1291,13 @@ def decrypt_(msg,user):
             
 
 
+# -----------------------------------------------------------------------MAIN------------------------------------------------------------------
 
+if __name__ == "__main__":
+    
+    app = SampleApp()
+    app.mainloop()
 
-app = SampleApp()
-app.mainloop()
-
-f1= open('data/app data/app_data.p','wb')
-pickle.dump(theme,f1)
-f1.close()
+    f1= open('data/app data/app_data.p','wb')
+    pickle.dump(theme,f1)
+    f1.close()
