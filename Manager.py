@@ -943,17 +943,17 @@ class Change_pass_label(Frame):
                     if self.username.get() == '':
                         self.username.set('---')
 
-                    list_ = [decrypt_(self.email.get(),user.get()),
-                    decrypt_(self.phone_num.get(),user.get()),
-                    decrypt_(self.username.get(),user.get()),
-                    decrypt_(self.password.get(),user.get())]
+                    list_ = [encrypt_(self.email.get(),user.get()),
+                    encrypt_(self.phone_num.get(),user.get()),
+                    encrypt_(self.username.get(),user.get()),
+                    encrypt_(self.password.get(),user.get())]
 
                     if os.path.isfile(f'data/pass data/{user.get()}_pass.p'):
                         with open(f'data/pass data/{user.get()}_pass.p','rb') as f:
                             self.dic=pickle.load(f)
                     self.dic.pop(self.key[c])
 
-                    self.dic[decrypt_(self.type.get(),user.get())] = list_
+                    self.dic[encrypt_(self.type.get(),user.get())] = list_
                     with open(f'data/pass data/{user.get()}_pass.p','wb') as f:
                         pickle.dump(self.dic,f)
                     msg.showinfo('Add Sucessfull', 'Your Password data has been added')
