@@ -1,5 +1,5 @@
 
-# **Password Manager** v2
+# **Password Manager** v3
 [<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/data/img/PicsArt_10-18-12.32.10.png" width="130">](PicsArt_10-18-12.32.10.png) 
 
 
