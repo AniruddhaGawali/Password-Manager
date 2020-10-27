@@ -33,7 +33,7 @@ For installing this application you have to just download it's setup file given 
 If you want to run the program in you IDE you have to install some modules
 
 **Requirement**
-- Python 3 (>3.5v)
+- Python 3 (>v3.5)
 - Windows, Mac, Linux OS only
 - Stable Internet connection
 
