@@ -7,11 +7,12 @@
 This Application is create for saving and to  keeping secure your passwords which you can't remember always. This is an simple application works on python lanugage. It's an GUI based application simple  and easy to use application. It's have lots of feature which will help you to make
 experience better. Even it is in under developing, You would not get any problem while using it simple and user friendly UI help you to make your work easy, faster and get you a more better result. So I think you must gave a try for this application.
 
-## Download Now | [⬇](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Password_Manager_setup.exe)
+## Download Now | [⬇](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Password%20manager%20setup.exe)
 
 ## Features v3
 ######  1. Added Encryption to save Passwords 
 ######  2. Minor Bug Fix
+######  3. Added Dark theme
 
 
 ##  Features v2
@@ -27,7 +28,7 @@ experience better. Even it is in under developing, You would not get any problem
 ##  Installation 
 For installing this application you have to just download it's setup file given in the program 
 
-#### **Download Now  |  [⬇](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Password_Manager_setup.exe)**
+#### **Download Now  |  [⬇](https://github.com/AniruddhaGawali/Password-Manager/raw/master/Password%20manager%20setup.exe)**
 
 If you want to run the program in you IDE you have to install some modules
 
