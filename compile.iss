@@ -5,7 +5,7 @@
 #define MyAppVersion "3.1.2"
 #define MyAppPublisher "BY AKG"
 #define MyAppURL "https://github.com/AniruddhaGawali"
-#define MyAppExeName "Manager.exe"
+#define MyAppExeName "main.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -63,7 +63,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 6.1; Check: not IsAdminInstallMode
 
 [Files]
-Source: "C:\Users\pc\Desktop\Password manager\Manager.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\pc\Desktop\Password manager\main.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\pc\Desktop\Password manager\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

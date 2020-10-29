@@ -271,11 +271,15 @@ class sign_up_page(Frame):
         if newuser.get() == '' or len(newpasss.get()) < 8:
             msg.showerror('Invalid Input','Please Enter Valid Username or\nPassword must be of 8 digit or More than That')
         else:
+            import tkinter.filedialog as tf
             genwrite_key(newuser.get())
+
             a=encrypt_(newuser.get(),newuser.get())
             b=encrypt_(newpasss.get(),newuser.get())
+            
             with open(f'data/user data/{newuser.get()}_pass_file.p','wb') as f:
                 pickle.dump([a,b],f)
+            
             msg.showinfo('Account Added Successfull','Your Account has been Added\nPlease Login you account to access')
             master.switch_frame(Login_page)
 
@@ -1007,9 +1011,6 @@ class Change_pass_label(Frame):
         save_but=ttk.Button(but_frame,text='Save Change',style='TButton',command=lambda : change()).grid(row=0,column=0,padx=10)
         clear_but=ttk.Button(but_frame,text='All Clear',style='TButton',command=lambda: clear(self)).grid(row=0,column=1,padx=10)
         back_but=ttk.Button(but_frame,text='Back',style='TButton',command=lambda : back(master)).grid(row=0,column=2,padx=10)
-
-
-
 
 
 
