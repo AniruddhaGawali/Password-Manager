@@ -1,6 +1,6 @@
 
 # **Password Manager** v3
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/data/img/PicsArt_10-18-12.32.10.png" width="130">](PicsArt_10-18-12.32.10.png) 
+[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/data/img/PicsArt_10-18-12.32.10.png" width="170">](PicsArt_10-18-12.32.10.png) 
 
 
 ## Lock It! Rock It! 
