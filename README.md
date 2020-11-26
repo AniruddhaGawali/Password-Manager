@@ -1,5 +1,5 @@
 
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/data/img/PicsArt_10-18-12.32.10.png" width="220">](PicsArt_10-18-12.32.10.png) 
+[<img src="data/img/PicsArt_10-18-12.32.10.png" width="220">](PicsArt_10-18-12.32.10.png) 
 
 
 ## Lock It! Rock It! 
@@ -68,13 +68,13 @@ As it's still in under developing it may have some issue, but you can send the i
 
  ## Some Screenshots 
  
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%203.png" width="500">](Screenshot%203.png) 
+[<img src="readme_img/Screenshot%203.png" width="500">](Screenshot%203.png) 
 
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%205.png" width="500">](Screenshot%205.png) 
+[<img src="readme_img/Screenshot%205.png" width="500">](Screenshot%205.png) 
 
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%202.png" width="500">](Screenshot%202.png) 
+[<img src="readme_img/Screenshot%202.png" width="500">](Screenshot%202.png) 
  
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%201.png" width="500">](Screenshot%201.png)
+[<img src="readme_img/Screenshot%201.png" width="500">](Screenshot%201.png)
   
-[<img src="https://github.com/AniruddhaGawali/Password-Manager/blob/master/readme_img/Screenshot%204.png" width="500">](Screenshot%204.png)
+[<img src="readme_img/Screenshot%204.png" width="500">](Screenshot%204.png)
  
