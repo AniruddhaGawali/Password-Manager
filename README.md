@@ -1,5 +1,5 @@
 
-[<img src="data/img/PicsArt_10-18-12.32.10.png" width="220">](PicsArt_10-18-12.32.10.png) 
+[<img src="data/img/PicsArt_10-18-12.32.10.png" width="300">](PicsArt_10-18-12.32.10.png) 
 
 
 ## Lock It! Rock It! 
