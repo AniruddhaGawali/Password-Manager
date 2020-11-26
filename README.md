@@ -9,18 +9,18 @@ experience better. Even it is in under developing, You would not get any problem
 ## Download Now | [⬇--v3](https://github.com/AniruddhaGawali/Password-Manager/raw/master/P_M_setup.exe)
 
 ## Features v3
-######  1. Added Encryption to save Passwords 
-######  2. Minor Bug Fix
-######  3. Added Dark theme
+ 1. Added Encryption to save Passwords 
+ 2. Minor Bug Fix
+ 3. Added Dark theme
 
 
 ##  Features v2
-######  1. Login and Resgistration sevice
-######  2. Mutilple, Multipeople Account can be created in this application
-######  3. Password Generator (Mix, Alpha-Numercial, Numerical)
-######  4. Add, Remove, Change, View the Passwords
-######  5. Fully Offline
-######  6. User friendly UI 
+ 1. Login and Resgistration sevice
+ 2. Mutilple, Multipeople Account can be created in this application
+ 3. Password Generator (Mix, Alpha-Numercial, Numerical)
+ 4. Add, Remove, Change, View the Passwords
+ 5. Fully Offline
+ 6. User friendly UI 
 
 
 
