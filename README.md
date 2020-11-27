@@ -52,9 +52,9 @@ pip install ttkthemes
 
 
 - #### Why need Password Manager ?
-Every day we go to new website and surf Internet. While in this we create lots of accounts and so far we also forgot it's passwords and username and gmail/phone number we added to it, and so some time we need to login again but we get stuck at then and finally due to this we have to reset that forgotton password, but it's take up our 5-6 minutes of our time.
+   Every day we go to new website and surf Internet. While in this we create lots of accounts and so far we also forgot it's passwords and username and gmail/phone number we added to it, and so some time we need to login again but we get stuck at then and finally due to this we have to reset that forgotton password, but it's take up our 5-6 minutes of our time.
 
-So to get rid from problem, this appilication has been create so you should not to get stucked while login and your work shouldn't stop or surfing get stuck due to this.
+   So to get rid from problem, this appilication has been create so you should not to get stucked while login and your work shouldn't stop or surfing get stuck due to this.
 
 - #### Security 
 It's work on python so it's have great security feature no one can see, change or remove your password without your permisssion.
