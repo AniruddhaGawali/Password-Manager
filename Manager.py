@@ -13,16 +13,18 @@ fa = None
 
 
 # -------------------------------------------------------------------GUI CLASS-----------------------------------------------------------------
-class SampleApp(Tk):
+class SampleApp(Tk): #importing tkinter to the class
     def __init__(self):
         Tk.__init__(self)
-        global theme,show_img,hide_img
-        if os.path.isfile('data/app data/app_data.p'):
+        global theme,show_img,hide_img #this will create some additional global variable
+
+        if os.path.isfile('data/app data/app_data.p'): # This program will first find the availability of theme pickle file in data folder or not and set the theme global variable according to it
             f1 = open('data/app data/app_data.p','rb')
             theme = pickle.load(f1)
             f1.close()
         else:
             theme=2
+        # Default theme is dark theme
 
         self.title('Password Manager')
         self.geometry('710x600')
@@ -32,12 +34,12 @@ class SampleApp(Tk):
         elif theme == 2:
             self.dark()
 
-        global user,passs
+        global user,passs # Settings up the user and password variable 
         user=StringVar()
         passs=StringVar()
         user.set('a')
 
-        menubar = MenuBar(self)
+        menubar = MenuBar(self) # Configuring the menubar at top
         self.config(menu=menubar)
 
         # self.back_img=ImageTk.PhotoImage(Image.open('data/img/back2.png'))
@@ -48,14 +50,16 @@ class SampleApp(Tk):
 
 
 
-    def switch_frame(self, frame_class):
+    def switch_frame(self, frame_class): # Function will help to switching between frame
         global new_frame
-        new_frame = frame_class(self)
+        new_frame = frame_class(self) # which ever frame name will put inside it it will get pack 
         if self._frame is not None:
-            self._frame.destroy()
+            self._frame.destroy() # destroying the previous frame it is there
         self._frame = new_frame
         self._frame.pack(anchor='center')
     
+    # Settings up the theme colours 
+
     def dark(self):    
         global bg_color,fg_color,menu_fg
         bg_color='gray10'
